@@ -12,7 +12,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
 @EnableSwagger2
-public class DashboardConfig {
+public class NotificationConfig {
 
     @Bean
     public RestTemplate restTemplate(RestTemplateBuilder builder) {
@@ -23,8 +23,8 @@ public class DashboardConfig {
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("io.coster.notificationsvc.controllers"))
-                .paths(PathSelectors.ant("/notification/*"))
+                .apis(RequestHandlerSelectors.basePackage("notificationsvc.controllers"))
+                .paths(PathSelectors.ant("/notification/**"))
                 .build();
     }
 
