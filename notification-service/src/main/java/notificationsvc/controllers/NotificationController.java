@@ -5,6 +5,7 @@ import contract.domain.WelcomeInfo;
 import lombok.RequiredArgsConstructor;
 import notificationsvc.services.NotificationService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
