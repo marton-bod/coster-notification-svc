@@ -106,9 +106,8 @@
                             </execution>
                         </executions>
                         <configuration>
-                            <imageName>coster.io/notification-svc</imageName>
+                            <imageName>martonbod/coster.io-notification-svc:1.1</imageName>
                             <dockerDirectory>${project.basedir}/../docker</dockerDirectory>
-                            <!-- copy the service's jar file from target into the root directory of the image -->
                             <resources>
                                 <resource>
                                     <targetPath>/</targetPath>
