@@ -3,6 +3,7 @@ package notificationsvc.services;
 import contract.domain.ForgotPasswordInfo;
 import contract.domain.WelcomeInfo;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import notificationsvc.services.model.Mail;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
@@ -20,6 +21,7 @@ import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class NotificationService {
 
     private final JavaMailSender emailSender;
@@ -29,7 +31,8 @@ public class NotificationService {
     private String fromEmail;
 
     public void sendPostRegisterationEmail(WelcomeInfo welcomeInfo) {
-        if (fromEmail.equals("disabled")) {
+        if (emailDisabled()) {
+            log.info("Email sending disabled. Not sending post-registration email.");
             return;
         }
 
@@ -49,8 +52,13 @@ public class NotificationService {
         sendHtmlEmail(mail);
     }
 
+    private boolean emailDisabled() {
+        return fromEmail == null || fromEmail.isBlank() || fromEmail.equals("disabled");
+    }
+
     public void sendForgotPasswordEmail(ForgotPasswordInfo forgotPasswordInfo) {
-        if (fromEmail.equals("disabled")) {
+        if (emailDisabled()) {
+            log.info("Email sending disabled. Not sending password reset email.");
             return;
         }
 
