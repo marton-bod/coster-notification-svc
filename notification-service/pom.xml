@@ -100,7 +100,7 @@
                             </execution>
                         </executions>
                         <configuration>
-                            <imageName>martonbod/coster.io-notification-svc:1.1</imageName>
+                            <imageName>martonbod/coster.io-notification-svc:latest</imageName>
                             <dockerDirectory>${project.basedir}/../docker</dockerDirectory>
                             <resources>
                                 <resource>
